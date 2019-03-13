@@ -1,0 +1,16 @@
+out
+.gradle
+.idea
+
+build
+target
+**/*.tfvars
+**/terraform.tfstate
+**/terraform.tfstate.backup
+**/.terraform.tfstate.lock.info
+**/.terraform
+*.pem
+*.class
+nohup.out
+
+src/test/kotlin/e2e/scripts/recoveryLumens\.kt
