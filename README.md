@@ -1,1 +1,1 @@
-# swp-kotlin-sdk
+# swp-java-sdk
