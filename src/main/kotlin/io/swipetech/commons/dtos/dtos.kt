@@ -172,10 +172,10 @@ data class SubError(val code: String,
                     val index: Long = -1)
 
 enum class OpCode(code: String) {
-    OP_OK("op_ok"),
-    OP_SUCCESS("op_success"),
-    OP_UNDERFUNDED("op_underfunded"),
-    OP_NOT_PROCESSED("op_not_processed")
+    ACTION_OK("action_ok"),
+    ACTION_SUCCESS("action_success"),
+    ACTION_UNDERFUNDED("action_underfunded"),
+    ACTION_NOT_PROCESSED("action_not_processed")
 }
 
 data class NewTransferBatchDTO(
