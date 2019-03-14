@@ -13,7 +13,7 @@ import java.time.Instant
 data class SuccessResponse<T>(
     val data: T? = null,
     val pagination: PaginationResponse? = null,
-    val error: Error? = null
+    val error: ErrorDTO? = null
 ) {
     companion object {
         fun <T> fromDataResp(res: ResponseDTO<T>): SuccessResponse<T> {
