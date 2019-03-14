@@ -3,7 +3,7 @@ package io.swipetech.sdk
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import io.swipetech.commons.dtos.ErrorDTO
+import io.swipetech.common.dtos.ErrorDTO
 import khttp.responses.Response
 
 fun checkError(resp: Response) {

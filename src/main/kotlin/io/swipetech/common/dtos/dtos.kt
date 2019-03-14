@@ -1,10 +1,7 @@
-package io.swipetech.commons.dtos
+package io.swipetech.common.dtos
 
 import com.fasterxml.jackson.annotation.*
 import org.hibernate.validator.constraints.Length
-import java.util.*
-import javax.crypto.Mac
-import javax.crypto.spec.SecretKeySpec
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Pattern
