@@ -277,7 +277,7 @@ data class TransferDTO(
         val asset: String? = "",
 
         @JsonProperty("op_code")
-        val opCode: String? = OpCode.OP_NOT_PROCESSED.toString()
+        val opCode: String? = OpCode.ACTION_NOT_PROCESSED.toString()
 ) : IActionDTO
 
 data class DataDTOReceipt<T>(

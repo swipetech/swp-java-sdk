@@ -14,3 +14,5 @@ target
 nohup.out
 
 src/test/kotlin/e2e/scripts/recoveryLumens\.kt
+
+swp-java-sdk\.iml
