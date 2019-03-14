@@ -4,8 +4,8 @@ import ApiKeyHeader
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.google.common.reflect.TypeToken
-import io.swipetech.common.actions.sign
-import io.swipetech.common.dtos.*
+import io.swipetech.commons.actions.sign
+import io.swipetech.commons.dtos.*
 
 import org.json.JSONObject
 import java.time.Instant

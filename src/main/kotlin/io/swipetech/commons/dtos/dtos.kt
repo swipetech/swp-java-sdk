@@ -1,4 +1,4 @@
-package io.swipetech.common.dtos
+package io.swipetech.commons.dtos
 
 import com.fasterxml.jackson.annotation.*
 import org.hibernate.validator.constraints.Length

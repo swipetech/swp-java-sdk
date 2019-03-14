@@ -1,4 +1,4 @@
-package io.swipetech.common.actions
+package io.swipetech.commons.actions
 
 import java.util.*
 import javax.crypto.Mac

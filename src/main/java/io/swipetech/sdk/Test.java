@@ -1,6 +1,6 @@
 package io.swipetech.sdk;
 
-import io.swipetech.common.dtos.*;
+import io.swipetech.commons.dtos.*;
 
 public class Test {
 
