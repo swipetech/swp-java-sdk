@@ -1,7 +1,6 @@
 package io.swipetech.sdk;
 
-import commons.dtos.BalanceDTO;
-import commons.dtos.NewAccDTO;
+import io.swipetech.commons.dtos.*;
 
 import java.util.ArrayList;
 import java.util.List;

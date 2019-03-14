@@ -1,7 +1,6 @@
 package io.swipetech.sdk;
 
-import commons.dtos.NewTransferBatchDTO;
-import commons.dtos.NewTransferDTO;
+import io.swipetech.commons.dtos.*;
 
 import java.util.ArrayList;
 import java.util.List;

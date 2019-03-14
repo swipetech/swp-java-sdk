@@ -1,6 +1,6 @@
 package io.swipetech.sdk;
 
-import commons.dtos.AcceptLanguage;
+import io.swipetech.commons.dtos.*;
 
 public class SwpBuilder {
 

@@ -1,9 +1,6 @@
 package io.swipetech.sdk;
 
-import commons.dtos.AccountDTO;
-import commons.dtos.ActionBatchDTO;
-import commons.dtos.AssetDTO;
-import commons.dtos.NewAssetDTO;
+import io.swipetech.commons.dtos.*;
 
 public class Test {
 

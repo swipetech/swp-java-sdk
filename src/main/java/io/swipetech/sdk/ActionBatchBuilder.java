@@ -1,6 +1,7 @@
 package io.swipetech.sdk;
 
-import commons.dtos.*;
+
+import io.swipetech.commons.dtos.*;
 
 import java.util.ArrayList;
 import java.util.List;
