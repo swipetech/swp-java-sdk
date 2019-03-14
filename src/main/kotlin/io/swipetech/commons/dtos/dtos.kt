@@ -172,10 +172,10 @@ data class SubError(val code: String,
                     val index: Long = -1)
 
 enum class OpCode(code: String) {
-    TRANSFER_OK("transfer_ok"),
-    TRANSFER_SUCCESS("transfer_success"),
-    TRANSFER_UNDERFUNDED("transfer_underfunded"),
-    TRANSFER_NOT_PROCESSED("transfer_not_processed")
+    OP_OK("transfer_ok"),
+    OP_SUCCESS("transfer_success"),
+    OP_UNDERFUNDED("transfer_underfunded"),
+    OP_NOT_PROCESSED("transfer_not_processed")
 }
 
 data class NewTransferBatchDTO(
@@ -277,7 +277,7 @@ data class TransferDTO(
         val asset: String? = "",
 
         @JsonProperty("op_code")
-        val opCode: String? = OpCode.TRANSFER_NOT_PROCESSED.toString()
+        val opCode: String? = OpCode.OP_NOT_PROCESSED.toString()
 ) : IActionDTO
 
 data class DataDTOReceipt<T>(
