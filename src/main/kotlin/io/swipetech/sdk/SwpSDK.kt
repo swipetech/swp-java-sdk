@@ -154,7 +154,7 @@ data class Swipe(
         return request(method = Methods.GET, path = "actions/$id")
     }
 
-    private inline fun <reified T> request(
+    private inline fun <reified T: Any> request(
         method: Method,
         path: String,
         pagination: PaginationParams? = null,
@@ -208,21 +208,6 @@ data class Swipe(
 
         checkError(resp)
 
-        if (resp.statusCode == 204) {
-            return gson.fromJson("{}", object : TypeToken<T>() {}.type)
-        }
-
-//        val response = gson.fromJson<T>(resp.jsonObject.toString(), object : TypeToken<T>() {}.type)
-
-        val mapper = jacksonObjectMapper()
-        val response = mapper.readValue<T>(resp.jsonObject.toString())
-
-        if (debug) {
-            println("Got response:")
-            println("--path:$path")
-            println("--body:$response")
-        }
-
-        return response
+        return getResp(resp, debug)
     }
 }
