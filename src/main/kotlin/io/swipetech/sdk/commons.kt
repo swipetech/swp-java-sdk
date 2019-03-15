@@ -16,7 +16,7 @@ fun checkError(resp: Response) {
         val errorDTO =  jacksonObjectMapper().readValue<ErrorDTO>(resp.jsonObject["error"].toString())
 
         errorDTO?.let {
-            throw  Error( code = it.code, msg = it.msg, subErrors = it.subErrors)
+            throw  it
         }
     }
 }
