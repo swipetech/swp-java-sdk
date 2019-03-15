@@ -7,6 +7,7 @@ import io.swipetech.commons.dtos.ErrorDTO
 import khttp.responses.Response
 
 fun checkError(resp: Response) {
+
     if (resp.statusCode !in 200..299) {
 
         if (resp.statusCode !in 400..500) {
@@ -15,9 +16,7 @@ fun checkError(resp: Response) {
 
         val errorDTO = gson.fromJson(resp.jsonObject["error"].toString(), ErrorDTO::class.java)
         errorDTO?.let {
-            //throw Error(code = ErrorCodes.valueOf(errorDTO.code.toUpperCase()), msg = it.msg, subErrors = errorDTO.subErrors)
-            //FIXME handle the error properly
-            throw Exception(it.toString())
+            throw it
         }
     }
 }

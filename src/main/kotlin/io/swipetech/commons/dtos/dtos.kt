@@ -162,7 +162,7 @@ data class FilterDTO(
 data class ErrorDTO(val code: String,
                     val msg: String,
                     @JsonProperty("sub_errors")
-                    val subErrors: MutableList<SubError>) {
+                    val subErrors: MutableList<SubError>): Throwable() {
     companion object
 }
 
