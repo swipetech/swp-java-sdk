@@ -23,7 +23,13 @@ fun checkError(resp: Response) {
 
 inline fun <reified T : Any> getResp(resp: Response, debug: Boolean = false): T {
 
-    val response = jacksonObjectMapper().readValue<T>(resp.jsonObject.toString())
+    val json = if (resp.statusCode == 204) {
+       "{}"
+    } else {
+        resp.jsonObject.toString()
+    }
+
+    val response = jacksonObjectMapper().readValue<T>(json)
 
     if (debug) {
         println("Got response:")

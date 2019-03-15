@@ -166,7 +166,7 @@ data class ErrorDTO(val code: String,
                     val subErrors: MutableList<SubError>):
 
     Throwable(message = "Error(code=$code, subErrors=$subErrors, msg='$msg')") {
-    
+
     companion object
 }
 
