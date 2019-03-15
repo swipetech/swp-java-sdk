@@ -159,13 +159,18 @@ data class FilterDTO(
         val tag: String? = null
 )
 
-@JsonIgnoreProperties("message", "cause")
 data class ErrorDTO(val code: String,
                     val msg: String,
                     @JsonProperty("sub_errors")
-                    val subErrors: MutableList<SubError>): Throwable() {
+                    val subErrors: MutableList<SubError>) {
     companion object
 }
+
+@JsonIgnoreProperties("message", "cause")
+data class Error(val code: String,
+                    val msg: String,
+                    @JsonProperty("sub_errors")
+                    val subErrors: MutableList<SubError>): Throwable()
 
 data class SubError(val code: String,
                     var msg: String? = null,

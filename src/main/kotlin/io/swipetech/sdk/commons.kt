@@ -2,7 +2,7 @@ package io.swipetech.sdk
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import io.swipetech.commons.dtos.ErrorDTO
+import io.swipetech.commons.dtos.*
 import khttp.responses.Response
 
 fun checkError(resp: Response) {
@@ -16,7 +16,7 @@ fun checkError(resp: Response) {
         val errorDTO =  jacksonObjectMapper().readValue<ErrorDTO>(resp.jsonObject["error"].toString())
 
         errorDTO?.let {
-            throw it
+            throw  Error( code = it.code, msg = it.msg, subErrors = it.subErrors)
         }
     }
 }
