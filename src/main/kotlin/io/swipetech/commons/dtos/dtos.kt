@@ -159,7 +159,7 @@ data class FilterDTO(
         val tag: String? = null
 )
 
-@JsonIgnoreProperties("message", "cause")
+@JsonIgnoreProperties("message", "cause", "stackTrace")
 data class ErrorDTO(val code: String,
                     val msg: String,
                     @JsonProperty("sub_errors")
