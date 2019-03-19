@@ -167,6 +167,10 @@ data class ErrorDTO(val code: String,
 
     Throwable(message = "Error(code=$code, subErrors=$subErrors, msg='$msg')") {
 
+    override fun toString(): String {
+        return "ErrorDTO(code='$code', msg='$msg', subErrors=$subErrors)"
+    }
+
     companion object
 }
 
