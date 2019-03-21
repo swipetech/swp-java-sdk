@@ -251,7 +251,7 @@ data class ActionBatchDTO(
 )
 
 data class NewActionBatchDTO(
-    @get:Size(min = 1, max = 20, message = "{act_invalid_actions_length}")
+    @get:Size(min = 1, max = 100, message = "{act_invalid_actions_length}")
         @JsonProperty("actions")
         val actions: List<INewActionDTO>,
 
