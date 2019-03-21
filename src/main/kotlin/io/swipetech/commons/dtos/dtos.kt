@@ -186,7 +186,7 @@ data class SubError(val code: String,
                     val field: String? = null,
                     val index: Long = -1)
 
-enum class OpCode(code: String) {
+enum class ActionCode(code: String) {
     ACTION_OK("action_ok"),
     ACTION_SUCCESS("action_success"),
     ACTION_UNDERFUNDED("action_underfunded"),
@@ -292,8 +292,8 @@ data class TransferDTO(
         @JsonProperty("asset")
         val asset: String? = "",
 
-        @JsonProperty("op_code")
-        val opCode: String? = OpCode.ACTION_NOT_PROCESSED.toString()
+        @JsonProperty("action_code")
+        val actionCode: String? = ActionCode.ACTION_NOT_PROCESSED.toString()
 ) : IActionDTO
 
 data class DataDTOReceipt<T>(

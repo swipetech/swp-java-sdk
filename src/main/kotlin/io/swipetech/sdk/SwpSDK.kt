@@ -200,7 +200,8 @@ data class Swipe(
             url = "$host/$path",
             params = params,
             headers = headers,
-            json = json
+            json = json,
+            timeout = 120.0
         )
 
         checkError(resp)
