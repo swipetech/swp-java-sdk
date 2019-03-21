@@ -14,6 +14,10 @@ enum class Network(val networkName: String) {
 
 data class PaginationResponse(val cursor: Long)
 
+
+
+
+
 data class NewOrgDTO(
         @JsonProperty("name")
         @get:NotBlank(message = "{org_name_empty}")
@@ -82,6 +86,9 @@ data class NewAccDTO(
         @JsonProperty("tags")
         val tags: List<String>? = listOf()
 ) : INewActionDTO
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
+data class DestroyAccDTO(val id: String): INewActionDTO
 
 data class BalanceDTO(
         @JsonProperty("asset_id")
@@ -214,7 +221,8 @@ data class TransferBatchDTO(
 @JsonSubTypes(
         JsonSubTypes.Type(value = NewTransferDTO::class, name = "TRANSFER"),
         JsonSubTypes.Type(value = NewAccDTO::class, name = "CREATE_ACC"),
-        JsonSubTypes.Type(value = NewAssetDTO::class, name = "ISSUE_ASSET")
+        JsonSubTypes.Type(value = NewAssetDTO::class, name = "ISSUE_ASSET"),
+        JsonSubTypes.Type(value = DestroyAccDTO::class, name = "DESTROY_ACC")
 )
 interface INewActionDTO
 
