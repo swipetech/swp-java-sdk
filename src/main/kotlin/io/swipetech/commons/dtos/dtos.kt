@@ -88,7 +88,7 @@ data class NewAccDTO(
 ) : INewActionDTO
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-data class DestroyAccDTO(val id: String): INewActionDTO
+data class DestroyAccDTO(val accId: String): INewActionDTO
 
 data class BalanceDTO(
         @JsonProperty("asset_id")
