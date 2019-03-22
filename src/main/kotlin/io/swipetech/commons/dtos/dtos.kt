@@ -73,7 +73,7 @@ data class AccountDTO(
     override val id: String,
     val balances: List<BalanceDTO> = listOf(),
     val tags: List<String>? = listOf(),
-    val baseFields: String? = null
+    val fields: String? = null
 ) : IActionDTO {
     companion object
 }
@@ -87,8 +87,8 @@ data class NewAccDTO(
         @JsonProperty("tags")
         val tags: List<String>? = listOf(),
 
-    @JsonProperty("base_fields")
-        val baseFields: String? = null
+    @JsonProperty("fields")
+        val fields: String? = null
 ) : INewActionDTO
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)

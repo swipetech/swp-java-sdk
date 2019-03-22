@@ -9,7 +9,7 @@ public class CreateAccountBuilder {
 
     public List<String> tags = new ArrayList();
     public List<BalanceDTO> balances = new ArrayList();
-    public String baseFields = new String();
+    public String fields = new String();
 
     public CreateAccountBuilder addTag(String tag) {
         tags.add(tag);
@@ -21,12 +21,12 @@ public class CreateAccountBuilder {
         return this;
     }
 
-    public CreateAccountBuilder addBaseFields(String baseFields) {
-        baseFields = (baseFields);
+    public CreateAccountBuilder addFields(String fields) {
+        fields = (fields);
         return this;
     }
 
     public NewAccDTO build() {
-        return new NewAccDTO(balances, tags, baseFields);
+        return new NewAccDTO(balances, tags, fields);
     }
 }
