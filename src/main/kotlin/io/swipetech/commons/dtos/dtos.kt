@@ -29,8 +29,8 @@ data class NewOrgDTO(
         @JsonProperty("assets")
         val assets: List<NewAssetDTO>? = listOf(),
 
-        @JsonProperty("suported_asset")
-        val suportedAsset: List<AssetDTO>? = listOf()
+        @JsonProperty("supported_asset")
+        val supportedAsset: List<AssetDTO>? = listOf()
 )
 
 data class OrgDTO(
@@ -135,6 +135,7 @@ data class AssetDTO(
     @get:Min(value = 1, message = "{ast_invalid_limit}")
         val limit: String = MAX_LIMIT,
 
+    @JsonProperty("tags")
     val tags: List<String>? = listOf()
 ) : IActionDTO {
 
