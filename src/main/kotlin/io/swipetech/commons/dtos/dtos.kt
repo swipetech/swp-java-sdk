@@ -29,8 +29,8 @@ data class NewOrgDTO(
         @JsonProperty("assets")
         val assets: List<NewAssetDTO>? = listOf(),
 
-        @JsonProperty("asset_suported")
-        val assetsSuported: List<AssetDTO>? = listOf()
+        @JsonProperty("suported_asset")
+        val suportedAsset: List<AssetDTO>? = listOf()
 )
 
 data class OrgDTO(
