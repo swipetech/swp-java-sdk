@@ -121,13 +121,17 @@ val MAX_LIMIT = "920000000000"
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 data class AssetDTO(
+
+    @JsonProperty("id")
     override val id: String,
 
+    @JsonProperty("code")
     @get:Length(max = 12, message = "{ast_code_invalid_length}")
         @get:NotBlank(message = "{ast_code_is_empty}")
         @get:Pattern(regexp = "^[a-zA-Z0-9]+\$", message = "{ast_code_invalid}")
         val code: String,
 
+    @JsonProperty("limit")
     @get:Min(value = 1, message = "{ast_invalid_limit}")
         val limit: String = MAX_LIMIT,
 
