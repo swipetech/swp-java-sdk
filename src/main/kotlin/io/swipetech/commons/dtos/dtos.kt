@@ -14,10 +14,6 @@ enum class Network(val networkName: String) {
 
 data class PaginationResponse(val cursor: Long)
 
-
-
-
-
 data class NewOrgDTO(
         @JsonProperty("name")
         @get:NotBlank(message = "{org_name_empty}")
@@ -31,7 +27,10 @@ data class NewOrgDTO(
         val isActive: Boolean? = true,
 
         @JsonProperty("assets")
-        val assets: List<NewAssetDTO>? = listOf()
+        val assets: List<NewAssetDTO>? = listOf(),
+
+        @JsonProperty("asset_suported")
+        val assetsSuported: List<NewAssetDTO>? = listOf()
 )
 
 data class OrgDTO(
