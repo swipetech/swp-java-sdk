@@ -15,54 +15,58 @@ enum class Network(val networkName: String) {
 data class PaginationResponse(val cursor: Long)
 
 data class NewOrgDTO(
-        @JsonProperty("name")
-        @get:NotBlank(message = "{org_name_empty}")
-        val name: String,
+    @JsonProperty("name")
+    @get:NotBlank(message = "{org_name_empty}")
+    val name: String,
 
-        @JsonProperty("network")
-        val network: String,
+    @JsonProperty("network")
+    val network: String,
 
-        @JsonInclude(JsonInclude.Include.NON_NULL)
-        @JsonProperty("active")
-        val isActive: Boolean? = true,
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("active")
+    val isActive: Boolean? = true,
 
-        @JsonProperty("assets")
-        val assets: List<NewAssetDTO>? = listOf(),
+    @JsonProperty("assets")
+    val assets: List<NewAssetDTO>? = listOf(),
 
-        @JsonProperty("supported_asset")
-        val supportedAsset: List<AssetDTO>? = listOf()
+    @JsonProperty("supported_asset")
+    val supportedAsset: List<AssetDTO>? = listOf()
 )
 
 data class OrgDTO(
     @JsonProperty("id")
-        val id: String,
+    val id: String,
 
     @JsonProperty("name")
-        @get:NotBlank(message = "{org_name_empty}")
-        val name: String,
+    @get:NotBlank(message = "{org_name_empty}")
+    val name: String,
 
     @JsonProperty("balances")
-        @JsonInclude(JsonInclude.Include.NON_NULL)
-        val balances: List<BalanceDTO> = listOf(),
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    val balances: List<BalanceDTO> = listOf(),
 
     @JsonProperty("secret")
-        @JsonInclude(JsonInclude.Include.NON_NULL)
-        val secret: String? = null,
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    val secret: String? = null,
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-        @JsonProperty("api_key")
-        val apiKey: String? = null,
+    @JsonProperty("api_key")
+    val apiKey: String? = null,
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-        @JsonProperty("network")
-        val network: Network,
+    @JsonProperty("network")
+    val network: Network,
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-        @JsonProperty("active")
-        val isActive: Boolean = true,
+    @JsonProperty("active")
+    val isActive: Boolean = true,
 
     @JsonProperty("assets")
-        val assets: List<AssetDTO>? = listOf()
+    val assets: List<AssetDTO>? = listOf(),
+
+    @JsonProperty("accs")
+    val accs: List<AccountDTO>? = listOf()
+
 ) {
     companion object
 }
@@ -80,41 +84,41 @@ data class AccountDTO(
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 data class NewAccDTO(
     @JsonProperty("starting_balances")
-        val startingBalances: List<BalanceDTO>? = listOf(),
+    val startingBalances: List<BalanceDTO>? = listOf(),
 
     @get:Size(max = 10, message = "{tag_invalid_size}")
-        @JsonProperty("tags")
-        val tags: List<String>? = listOf(),
+    @JsonProperty("tags")
+    val tags: List<String>? = listOf(),
 
     @JsonProperty("fields")
-        val fields: String? = null
+    val fields: String? = null
 ) : INewActionDTO
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-data class DestroyAccDTO(  @JsonProperty("acc_id") val accId: String): INewActionDTO
+data class DestroyAccDTO(@JsonProperty("acc_id") val accId: String) : INewActionDTO
 
 data class BalanceDTO(
-        @JsonProperty("asset_id")
-        val assetId: String,
-        @JsonProperty("asset_code")
-        val assetCode: String? = "",
-        @JsonProperty("balance")
-        val balance: String
+    @JsonProperty("asset_id")
+    val assetId: String,
+    @JsonProperty("asset_code")
+    val assetCode: String? = "",
+    @JsonProperty("balance")
+    val balance: String
 ) {
     companion object
 }
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 data class NewAssetDTO(
-        @JsonProperty("code")
-        val code: String,
+    @JsonProperty("code")
+    val code: String,
 
-        @JsonProperty("limit")
-        val limit: String? = null,
+    @JsonProperty("limit")
+    val limit: String? = null,
 
-        @get:Size(max = 10, message = "{tag_invalid_size}")
-        @JsonProperty("tags")
-        val tags: List<String>? = listOf()
+    @get:Size(max = 10, message = "{tag_invalid_size}")
+    @JsonProperty("tags")
+    val tags: List<String>? = listOf()
 ) : INewActionDTO
 
 val MAX_LIMIT = "920000000000"
@@ -127,13 +131,13 @@ data class AssetDTO(
 
     @JsonProperty("code")
     @get:Length(max = 12, message = "{ast_code_invalid_length}")
-        @get:NotBlank(message = "{ast_code_is_empty}")
-        @get:Pattern(regexp = "^[a-zA-Z0-9]+\$", message = "{ast_code_invalid}")
-        val code: String,
+    @get:NotBlank(message = "{ast_code_is_empty}")
+    @get:Pattern(regexp = "^[a-zA-Z0-9]+\$", message = "{ast_code_invalid}")
+    val code: String,
 
     @JsonProperty("limit")
     @get:Min(value = 1, message = "{ast_invalid_limit}")
-        val limit: String = MAX_LIMIT,
+    val limit: String = MAX_LIMIT,
 
     @JsonProperty("tags")
     val tags: List<String>? = listOf()
@@ -151,34 +155,36 @@ data class AssetDTO(
 }
 
 data class NewTagsDTO(
-        @get:Size(max = 10, message = "{tag_invalid_size}")
-        val tags: List<String> = listOf()
+    @get:Size(max = 10, message = "{tag_invalid_size}")
+    val tags: List<String> = listOf()
 )
 
 data class TagsDTO(
-        val id: String,
-        val tags: List<String> = listOf()
+    val id: String,
+    val tags: List<String> = listOf()
 )
 
 data class ReceiptDTO(
-        @JsonProperty("id")
-        val id: String,
+    @JsonProperty("id")
+    val id: String,
 
-        @JsonProperty("created_at")
-        val createdAt: String
+    @JsonProperty("created_at")
+    val createdAt: String
 ) {
     companion object
 }
 
 data class FilterDTO(
-        val tag: String? = null
+    val tag: String? = null
 )
 
 @JsonIgnoreProperties("message", "cause", "stackTrace", "suppressed", "localizedMessage")
-data class ErrorDTO(val code: String,
-                    val msg: String,
-                    @JsonProperty("sub_errors")
-                    val subErrors: MutableList<SubError>):
+data class ErrorDTO(
+    val code: String,
+    val msg: String,
+    @JsonProperty("sub_errors")
+    val subErrors: MutableList<SubError>
+) :
 
     Throwable(message = "Error(code=$code, subErrors=$subErrors, msg='$msg')") {
 
@@ -189,10 +195,12 @@ data class ErrorDTO(val code: String,
     companion object
 }
 
-data class SubError(val code: String,
-                    var msg: String? = null,
-                    val field: String? = null,
-                    val index: Long = -1)
+data class SubError(
+    val code: String,
+    var msg: String? = null,
+    val field: String? = null,
+    val index: Long = -1
+)
 
 enum class ActionCode(code: String) {
     ACTION_OK("action_ok"),
@@ -203,45 +211,47 @@ enum class ActionCode(code: String) {
 
 data class NewTransferBatchDTO(
     @JsonProperty("actions")
-        val actions: MutableList<NewTransferDTO> = mutableListOf(),
+    val actions: MutableList<NewTransferDTO> = mutableListOf(),
 
     @JsonProperty("memo")
-        val memo: String? = null
+    val memo: String? = null
 )
 
 data class TransferBatchDTO(
     @JsonProperty("id")
-        val id: String? = null,
+    val id: String? = null,
 
     @JsonProperty("actions")
-        val actions: MutableList<TransferDTO> = mutableListOf(),
+    val actions: MutableList<TransferDTO> = mutableListOf(),
 
     @JsonProperty("memo")
-        val memo: String? = null
+    val memo: String? = null
 ) {
     companion object
 }
 
 @JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "type")
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "type"
+)
 @JsonSubTypes(
-        JsonSubTypes.Type(value = NewTransferDTO::class, name = "TRANSFER"),
-        JsonSubTypes.Type(value = NewAccDTO::class, name = "CREATE_ACC"),
-        JsonSubTypes.Type(value = NewAssetDTO::class, name = "ISSUE_ASSET"),
-        JsonSubTypes.Type(value = DestroyAccDTO::class, name = "DESTROY_ACC")
+    JsonSubTypes.Type(value = NewTransferDTO::class, name = "TRANSFER"),
+    JsonSubTypes.Type(value = NewAccDTO::class, name = "CREATE_ACC"),
+    JsonSubTypes.Type(value = NewAssetDTO::class, name = "ISSUE_ASSET"),
+    JsonSubTypes.Type(value = DestroyAccDTO::class, name = "DESTROY_ACC")
 )
 interface INewActionDTO
 
 @JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "type")
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "type"
+)
 @JsonSubTypes(
-        JsonSubTypes.Type(value = TransferDTO::class, name = "TRANSFER"),
-        JsonSubTypes.Type(value = AccountDTO::class, name = "CREATE_ACC"),
-        JsonSubTypes.Type(value = AssetDTO::class, name = "ISSUE_ASSET")
+    JsonSubTypes.Type(value = TransferDTO::class, name = "TRANSFER"),
+    JsonSubTypes.Type(value = AccountDTO::class, name = "CREATE_ACC"),
+    JsonSubTypes.Type(value = AssetDTO::class, name = "ISSUE_ASSET")
 )
 interface IActionDTO {
     val id: String?
@@ -249,59 +259,59 @@ interface IActionDTO {
 
 data class ActionBatchDTO(
     @JsonProperty("id")
-        val id: String,
+    val id: String,
 
     @JsonProperty("actions")
-        val actions: List<IActionDTO>,
+    val actions: List<IActionDTO>,
 
     @JsonProperty("memo")
-        val memo: String? = null
+    val memo: String? = null
 )
 
 data class NewActionBatchDTO(
     @get:Size(min = 1, max = 100, message = "{act_invalid_actions_length}")
-        @JsonProperty("actions")
-        val actions: List<INewActionDTO>,
+    @JsonProperty("actions")
+    val actions: List<INewActionDTO>,
 
     @JsonProperty("memo")
-        val memo: String? = null
+    val memo: String? = null
 )
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 data class NewTransferDTO(
-        @JsonProperty("from")
-        val from: String,
+    @JsonProperty("from")
+    val from: String,
 
-        @JsonProperty("to")
-        val to: String,
+    @JsonProperty("to")
+    val to: String,
 
-        @JsonProperty("amount")
-        val amount: String,
+    @JsonProperty("amount")
+    val amount: String,
 
-        @JsonProperty("asset")
-        val asset: String
+    @JsonProperty("asset")
+    val asset: String
 ) : INewActionDTO
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 data class TransferDTO(
 
-        @JsonProperty("id")
-        override val id: String? = null,
+    @JsonProperty("id")
+    override val id: String? = null,
 
-        @JsonProperty("from")
-        val from: String? = "",
+    @JsonProperty("from")
+    val from: String? = "",
 
-        @JsonProperty("to")
-        val to: String? = "",
+    @JsonProperty("to")
+    val to: String? = "",
 
-        @JsonProperty("amount")
-        val amount: String? = "0",
+    @JsonProperty("amount")
+    val amount: String? = "0",
 
-        @JsonProperty("asset")
-        val asset: String? = "",
+    @JsonProperty("asset")
+    val asset: String? = "",
 
-        @JsonProperty("action_code")
-        val actionCode: String? = ActionCode.ACTION_NOT_PROCESSED.toString()
+    @JsonProperty("action_code")
+    val actionCode: String? = ActionCode.ACTION_NOT_PROCESSED.toString()
 ) : IActionDTO
 
 data class DataDTOReceipt<T>(
@@ -310,23 +320,26 @@ data class DataDTOReceipt<T>(
 )
 
 data class DataDTO<T>(
-        val value: T
+    val value: T
 )
 
 data class ResponseToken(
-        @JsonProperty("token")
-        val token: String? = null
+    @JsonProperty("token")
+    val token: String? = null
 )
 
-data class ResponseDTO<T>(val data: T? = null,
-                          val error: ErrorDTO? = null) {
+data class ResponseDTO<T>(
+    val data: T? = null,
+    val error: ErrorDTO? = null
+) {
     companion object
 }
 
 data class ResponseListDTO<T>(
     val data: List<DataDTOReceipt<T>>,
     val pagination: PaginationResponse?,
-    val error: ErrorDTO? = null) {
+    val error: ErrorDTO? = null
+) {
     companion object
 }
 
