@@ -334,11 +334,11 @@ data class WebHookDTO(
 
     @JsonProperty("name")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    val hookType: String,
+    val hookType: String? = null,
 
     @JsonProperty("balances")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    val url: String,
+    val url: String? = null,
 
     @JsonProperty("secret")
     @JsonInclude(JsonInclude.Include.NON_NULL)
