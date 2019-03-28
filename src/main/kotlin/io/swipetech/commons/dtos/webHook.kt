@@ -18,7 +18,7 @@ data class WebHookDTO(
     @JsonProperty("id")
     val id: String,
 
-    @JsonProperty("name")
+    @JsonProperty("hook_type")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     val hookType: String? = null,
 
