@@ -319,6 +319,34 @@ data class TransferDTO(
     val actionCode: String? = ActionCode.ACTION_NOT_PROCESSED.toString()
 ) : IActionDTO
 
+
+data class NewWebHookDTO(
+    @JsonProperty("url")
+    @get:NotBlank(message = "{url_name_empty}")
+    val url: String,
+
+    @get:NotBlank(message = "{secret_name_empty}")
+    @JsonProperty("secret")
+    val secret: String
+)
+
+data class WebHookDTO(
+    @JsonProperty("id")
+    val id: String,
+
+    @JsonProperty("name")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    val hookType: String? = null,
+
+    @JsonProperty("balances")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    val url: String? = null,
+
+    @JsonProperty("secret")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    val secret: String? = null
+)
+
 data class DataDTOReceipt<T>(
     val receipt: ReceiptDTO,
     val value: T
