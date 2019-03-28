@@ -7,11 +7,7 @@ import javax.validation.constraints.NotBlank
 data class NewWebHookDTO(
     @JsonProperty("url")
     @get:NotBlank(message = "{url_name_empty}")
-    val url: String,
-
-    @get:NotBlank(message = "{secret_name_empty}")
-    @JsonProperty("secret")
-    val secret: String
+    val url: String
 )
 
 data class WebHookDTO(
