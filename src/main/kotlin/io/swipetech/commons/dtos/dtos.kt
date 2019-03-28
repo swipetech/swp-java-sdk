@@ -75,16 +75,6 @@ data class OrgDTO(
 }
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-data class AccountDTO(
-    override val id: String,
-    val balances: List<BalanceDTO> = listOf(),
-    val tags: List<String>? = listOf(),
-    val fields: String? = null
-) : IActionDTO {
-    companion object
-}
-
-@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 data class NewAccDTO(
     @JsonProperty("starting_balances")
     val startingBalances: List<BalanceDTO>? = listOf(),
@@ -96,6 +86,16 @@ data class NewAccDTO(
     @JsonProperty("fields")
     val fields: String? = null
 ) : INewActionDTO
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
+data class AccountDTO(
+    override val id: String,
+    val balances: List<BalanceDTO> = listOf(),
+    val tags: List<String>? = listOf(),
+    val fields: String? = null
+) : IActionDTO {
+    companion object
+}
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 data class DestroyAccDTO(@JsonProperty("acc_id") val accId: String) : INewActionDTO
@@ -113,11 +113,16 @@ data class BalanceDTO(
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 data class NewAssetDTO(
+
     @JsonProperty("code")
+    @get:Length(max = 12, message = "{ast_code_invalid_length}")
+    @get:NotBlank(message = "{ast_code_is_empty}")
+    @get:Pattern(regexp = "^[a-zA-Z0-9]+\$", message = "{ast_code_invalid}")
     val code: String,
 
     @JsonProperty("limit")
-    val limit: String? = null,
+    @get:Min(value = 1, message = "{ast_invalid_limit}")
+    val limit: String? = MAX_LIMIT,
 
     @get:Size(max = 10, message = "{tag_invalid_size}")
     @JsonProperty("tags")
@@ -133,17 +138,14 @@ data class AssetDTO(
     override val id: String,
 
     @JsonProperty("code")
-    @get:Length(max = 12, message = "{ast_code_invalid_length}")
-    @get:NotBlank(message = "{ast_code_is_empty}")
-    @get:Pattern(regexp = "^[a-zA-Z0-9]+\$", message = "{ast_code_invalid}")
     val code: String,
 
     @JsonProperty("limit")
-    @get:Min(value = 1, message = "{ast_invalid_limit}")
     val limit: String = MAX_LIMIT,
 
     @JsonProperty("tags")
     val tags: List<String>? = listOf()
+
 ) : IActionDTO {
 
     override fun hashCode(): Int {
