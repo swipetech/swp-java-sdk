@@ -20,6 +20,7 @@ enum class ActionCode(code: String) {
 )
 @JsonSubTypes(
     JsonSubTypes.Type(value = NewTransferDTO::class, name = "TRANSFER"),
+    JsonSubTypes.Type(value = NewTrailTransferDTO::class, name = "TRAIL_TRANSFER"),
     JsonSubTypes.Type(value = NewAccDTO::class, name = "CREATE_ACC"),
     JsonSubTypes.Type(value = NewAssetDTO::class, name = "ISSUE_ASSET"),
     JsonSubTypes.Type(value = DestroyAccDTO::class, name = "DESTROY_ACC")
@@ -33,6 +34,7 @@ interface INewActionDTO
 )
 @JsonSubTypes(
     JsonSubTypes.Type(value = TransferDTO::class, name = "TRANSFER"),
+    JsonSubTypes.Type(value = TrailTransferDTO::class, name = "TRAIL_TRANSFER"),
     JsonSubTypes.Type(value = AccountDTO::class, name = "CREATE_ACC"),
     JsonSubTypes.Type(value = AssetDTO::class, name = "ISSUE_ASSET")
 )
