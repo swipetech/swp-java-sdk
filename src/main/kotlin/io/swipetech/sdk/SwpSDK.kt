@@ -182,7 +182,6 @@ data class Swipe(
         pagination?.let { p ->
             params["limit"] = p.limit
             p.startingAfter?.let { params["starting_after"] = it }
-            p.endingBefore?.let { params["ending_before"] = it }
         }
 
         filter?.let { f ->

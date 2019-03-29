@@ -100,10 +100,6 @@ data class PaginationParams(
     @JsonProperty("starting_after")
     val startingAfter: String? = null,
 
-    @get:Min(value = 0, message = "{pagination_ending_before}")
-    @JsonProperty("ending_before")
-    val endingBefore: String? = null,
-
     @get:Min(value = 0, message = "{pagination_limit}")
     @JsonProperty("limit")
     val limit: String = "100"
