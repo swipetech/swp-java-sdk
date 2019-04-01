@@ -151,7 +151,7 @@ data class Swipe(
         return request(method = Methods.GET, path = "actions/$id")
     }
 
-    fun createWebhook(hook: NewWebHookDTO): SuccessResponse<DataDTO<WebHookDTO>> {
+    fun createWebhook(hook: NewWebhookDTO): SuccessResponse<DataDTO<WebhookDTO>> {
         val json = hook.let{
         val mapper = jacksonObjectMapper()
             mapper.writeValueAsString(it)
@@ -163,6 +163,10 @@ data class Swipe(
 
     fun deleteWebHook(externalId: String): SuccessResponse<Any> {
         return request(method = Methods.DELETE, path = "webhook/$externalId")
+    }
+
+    fun getWebhook(id: String): SuccessResponse<DataDTO<WebhookDTO>> {
+        return request(method = Methods.GET, path = "webhook/$id")
     }
 
     private inline fun <reified T: Any> request(

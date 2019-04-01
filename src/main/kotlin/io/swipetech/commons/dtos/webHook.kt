@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.NotBlank
 
-data class NewWebHookDTO(
+data class NewWebhookDTO(
     @JsonProperty("url")
     @get:NotBlank(message = "{url_name_empty}")
     val url: String
 )
 
-data class WebHookDTO(
+data class WebhookDTO(
     @JsonProperty("id")
     val id: String,
 
