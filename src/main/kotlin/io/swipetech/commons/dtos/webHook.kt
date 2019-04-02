@@ -10,6 +10,10 @@ data class NewWebhookDTO(
     val url: String
 )
 
+enum class WebhookType(type: String) {
+    TRANSFER_RECEIVED("transfer_received")
+}
+
 data class WebhookDTO(
     @JsonProperty("id")
     val id: String,
