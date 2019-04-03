@@ -4,8 +4,8 @@ import java.util.*
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 
-fun sign(secret: String, path: String, body: String, timestamp: String) =
-    getHmac256(secret, timestamp + path + body)
+fun sign(secret: String, method: String, path: String, body: String, timestamp: String) =
+    getHmac256(secret, method + timestamp + path + body)
 
 fun getHmac256(key: String, message: String): String {
 

@@ -179,7 +179,13 @@ data class Swipe(
 
         val body = json ?: ""
         val timestamp = Instant.now().epochSecond.toString()
-        val signature = sign(secret = secret, path = "/$path", body = body.toString(), timestamp = timestamp)
+        val signature = sign(
+            secret = secret, 
+            method = method,
+            path = "/$path", 
+            body = body.toString(), 
+            timestamp = timestamp
+        )
 
         val params = mutableMapOf<String, String>()
 
