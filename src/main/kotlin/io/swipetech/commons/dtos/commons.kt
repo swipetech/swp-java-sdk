@@ -7,9 +7,9 @@ import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Pattern
 import javax.validation.constraints.Size
 
-enum class Network(val networkName: String) {
-    SWIPE("SWIPE"),
-    STELLAR("STELLAR")
+open class Network(val networkName: String) {
+    object SWIPE: Network("SWIPE")
+    object STELLAR: Network("STELLAR")
 }
 
 data class PaginationResponse(val cursor: Long)
