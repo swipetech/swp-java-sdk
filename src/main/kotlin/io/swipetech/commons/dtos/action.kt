@@ -50,7 +50,7 @@ data class ActionBatchDTO(
     val actions: List<IActionDTO>,
 
     @JsonProperty("memo")
-    val memo: String? = null
+    val memo: Memo? = null
 )
 
 data class NewActionBatchDTO(
@@ -59,5 +59,5 @@ data class NewActionBatchDTO(
     val actions: List<INewActionDTO>,
 
     @JsonProperty("memo")
-    val memo: String? = null
+    val memo: Memo? = null
 )

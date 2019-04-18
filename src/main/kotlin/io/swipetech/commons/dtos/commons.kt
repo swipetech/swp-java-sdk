@@ -129,3 +129,9 @@ class Host {
         const val SANDBOX = "https://api-sandbox.swipetech.io"
     }
 }
+
+enum class MemoType {
+    Hash, Text
+}
+
+data class Memo(val type: MemoType = MemoType.Text, val value: String)
