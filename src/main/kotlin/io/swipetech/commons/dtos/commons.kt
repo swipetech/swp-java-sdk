@@ -136,7 +136,7 @@ enum class MemoType {
 
 data class Memo(
     @JsonProperty("type")
-    val type: MemoType = MemoType.Text,
+    val type: String = MemoType.Text.name,
 
     @JsonProperty("value")
     val value: String
