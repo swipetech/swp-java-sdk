@@ -10,23 +10,29 @@ public class CreateAccountBuilder {
     public List<String> tags = new ArrayList();
     public List<BalanceDTO> balances = new ArrayList();
     public String fields = new String();
+    public String alias = new String();
 
     public CreateAccountBuilder addTag(String tag) {
-        tags.add(tag);
+        this.tags.add(tag);
         return this;
     }
 
     public CreateAccountBuilder addStartingBalance(String assetID, String balance) {
-        balances.add(new BalanceDTO(assetID, null, balance));
+        this.balances.add(new BalanceDTO(assetID, null, balance));
         return this;
     }
 
     public CreateAccountBuilder addFields(String fields) {
-        fields = (fields);
+        this.fields = fields;
+        return this;
+    }
+
+    public CreateAccountBuilder setAlias(String alias) {
+        this.alias = alias;
         return this;
     }
 
     public NewAccDTO build() {
-        return new NewAccDTO(balances, tags, fields);
+        return new NewAccDTO(balances, tags, fields, alias);
     }
 }

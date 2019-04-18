@@ -5,6 +5,8 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.swipetech.commons.actions.sign
 import io.swipetech.commons.dtos.*
 import org.json.JSONObject
+import SwpTimestamp
+import SwpSignature
 import java.time.Instant
 
 data class SuccessResponse<T>(
@@ -117,6 +119,13 @@ data class Swipe(
         )
     }
 
+    fun getAccountByAlias(alias: String): SuccessResponse<DataDTOReceipt<AccountDTO>> {
+        return request(
+            method = Methods.GET,
+            path = "accounts/alias/$alias"
+        )
+    }
+
     fun issueAsset(asset: NewAssetDTO): SuccessResponse<DataDTOReceipt<AssetDTO>> {
         return request(
             method = Methods.POST,
@@ -180,10 +189,10 @@ data class Swipe(
         val body = json ?: ""
         val timestamp = Instant.now().epochSecond.toString()
         val signature = sign(
-            secret = secret, 
+            secret = secret,
             method = method,
-            path = "/$path", 
-            body = body.toString(), 
+            path = "/$path",
+            body = body.toString(),
             timestamp = timestamp
         )
 
@@ -200,8 +209,8 @@ data class Swipe(
 
         val headers = mapOf(
             ApiKeyHeader to apiKey,
-            "X-Swp-Timestamp" to timestamp,
-            "X-Swp-Signature" to signature,
+            SwpTimestamp to timestamp,
+            SwpSignature to signature,
             "accept-language" to lang
         )
 

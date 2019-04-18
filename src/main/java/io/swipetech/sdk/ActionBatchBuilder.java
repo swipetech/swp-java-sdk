@@ -32,6 +32,6 @@ public class ActionBatchBuilder {
     }
 
     public NewActionBatchDTO build() {
-        return new NewActionBatchDTO(actions, "memo");
+        return new NewActionBatchDTO(actions, new Memo( MemoType.Text, "memo"));
     }
 }

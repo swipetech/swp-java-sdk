@@ -7,7 +7,7 @@ data class NewTransferBatchDTO(
     val actions: MutableList<NewTransferDTO> = mutableListOf(),
 
     @JsonProperty("memo")
-    val memo: String? = null
+    val memo: Memo? = null
 )
 
 data class TransferBatchDTO(
@@ -18,7 +18,7 @@ data class TransferBatchDTO(
     val actions: MutableList<TransferDTO> = mutableListOf(),
 
     @JsonProperty("memo")
-    val memo: String? = null
+    val memo: Memo? = null
 ) {
     companion object
 }

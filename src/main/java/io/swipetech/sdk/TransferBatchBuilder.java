@@ -7,10 +7,10 @@ import java.util.List;
 
 public class TransferBatchBuilder {
 
-    private String memo;
+    private Memo memo;
     private List<NewTransferDTO> transfers = new ArrayList();
 
-    public TransferBatchBuilder addMemo(String memo) {
+    public TransferBatchBuilder addMemo(Memo memo) {
         this.memo = memo;
         return this;
     }

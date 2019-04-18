@@ -5,6 +5,14 @@ import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.Size
 
+enum class ActionType {
+     TRANSFER,
+     TRAIL_TRANSFER,
+     CREATE_ORG,
+     ISSUE_ASSET,
+     CREATE_ACC,
+     DESTROY_ACC
+}
 
 enum class ActionCode(code: String) {
     ACTION_OK("action_ok"),
@@ -16,7 +24,7 @@ enum class ActionCode(code: String) {
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
     include = JsonTypeInfo.As.PROPERTY,
-    property = "type"
+    property = "actionType"
 )
 @JsonSubTypes(
     JsonSubTypes.Type(value = NewTransferDTO::class, name = "TRANSFER"),
@@ -30,7 +38,7 @@ interface INewActionDTO
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
     include = JsonTypeInfo.As.PROPERTY,
-    property = "type"
+    property = "actionType"
 )
 @JsonSubTypes(
     JsonSubTypes.Type(value = TransferDTO::class, name = "TRANSFER"),
@@ -50,7 +58,7 @@ data class ActionBatchDTO(
     val actions: List<IActionDTO>,
 
     @JsonProperty("memo")
-    val memo: String? = null
+    val memo: Memo? = null
 )
 
 data class NewActionBatchDTO(
@@ -59,5 +67,5 @@ data class NewActionBatchDTO(
     val actions: List<INewActionDTO>,
 
     @JsonProperty("memo")
-    val memo: String? = null
+    val memo: Memo? = null
 )
