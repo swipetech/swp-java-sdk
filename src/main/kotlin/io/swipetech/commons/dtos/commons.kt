@@ -134,4 +134,10 @@ enum class MemoType {
     Hash, Text
 }
 
-data class Memo(val type: MemoType = MemoType.Text, val value: String)
+data class Memo(
+    @JsonProperty("type")
+    val type: MemoType = MemoType.Text,
+
+    @JsonProperty("value")
+    val value: String
+)
