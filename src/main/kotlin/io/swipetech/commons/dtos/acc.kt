@@ -15,7 +15,7 @@ data class NewAccDTO(
     val tags: List<String>? = listOf(),
 
     @JsonProperty("fields")
-    val fields: String? = null
+    val fields: Map<String, String>? = null
 ) : INewActionDTO
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
