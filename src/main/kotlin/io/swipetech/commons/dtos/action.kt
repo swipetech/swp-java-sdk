@@ -24,7 +24,7 @@ enum class ActionCode(code: String) {
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
     include = JsonTypeInfo.As.PROPERTY,
-    property = "actionType"
+    property = "type"
 )
 @JsonSubTypes(
     JsonSubTypes.Type(value = NewTransferDTO::class, name = "TRANSFER"),
@@ -38,7 +38,7 @@ interface INewActionDTO
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
     include = JsonTypeInfo.As.PROPERTY,
-    property = "actionType"
+    property = "type"
 )
 @JsonSubTypes(
     JsonSubTypes.Type(value = TransferDTO::class, name = "TRANSFER"),
