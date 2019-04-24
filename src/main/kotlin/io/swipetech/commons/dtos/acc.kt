@@ -16,7 +16,7 @@ data class NewAccDTO(
     val tags: List<String>? = listOf(),
 
     @JsonProperty("fields")
-    val fields: HashMap<String, String>? = null
+    val fields: HashMap<String, String>? = null,
 
     @JsonProperty("alias")
     val alias: String? = null
