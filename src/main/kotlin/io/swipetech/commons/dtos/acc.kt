@@ -28,7 +28,8 @@ data class AccountDTO(
     override val id: String,
     val balances: List<BalanceDTO> = listOf(),
     val tags: List<String>? = listOf(),
-    val fields: HashMap<String, String>? = null
+    val fields: HashMap<String, String>? = null,
+    val alias: String? = null
 ) : IActionDTO {
     companion object
 }
