@@ -16,7 +16,7 @@ data class NewAccDTO(
     val tags: List<String>? = listOf(),
 
     @JsonProperty("fields")
-    val fields: String? = null,
+    val fields: HashMap<String, String>? = null
 
     @JsonProperty("alias")
     val alias: String? = null
@@ -28,8 +28,7 @@ data class AccountDTO(
     override val id: String,
     val balances: List<BalanceDTO> = listOf(),
     val tags: List<String>? = listOf(),
-    val fields: String? = null,
-    val alias: String? = null
+    val fields: HashMap<String, String>? = null
 ) : IActionDTO {
     companion object
 }

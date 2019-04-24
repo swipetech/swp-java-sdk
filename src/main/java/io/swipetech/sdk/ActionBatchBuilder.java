@@ -8,10 +8,10 @@ import java.util.List;
 
 public class ActionBatchBuilder {
 
-    private String memo;
+    private Memo memo;
     private List<INewActionDTO> actions = new ArrayList();
 
-    public ActionBatchBuilder addMemo(String memo) {
+    public ActionBatchBuilder addMemo(Memo memo) {
         this.memo = memo;
         return this;
     }
@@ -32,6 +32,6 @@ public class ActionBatchBuilder {
     }
 
     public NewActionBatchDTO build() {
-        return new NewActionBatchDTO(actions, new Memo( MemoType.Text, "memo"));
+        return new NewActionBatchDTO(actions, new Memo(MemoType.TEXT.name(), "memo"));
     }
 }

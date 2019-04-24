@@ -3,13 +3,15 @@ package io.swipetech.sdk;
 import io.swipetech.commons.dtos.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CreateAccountBuilder {
 
     public List<String> tags = new ArrayList();
     public List<BalanceDTO> balances = new ArrayList();
-    public String fields = new String();
+    public HashMap<String, String> fields = new HashMap();
     public String alias = new String();
 
     public CreateAccountBuilder addTag(String tag) {
@@ -22,8 +24,8 @@ public class CreateAccountBuilder {
         return this;
     }
 
-    public CreateAccountBuilder addFields(String fields) {
-        this.fields = fields;
+    public CreateAccountBuilder addFields(HashMap<String, String> newFields) {
+        fields = (newFields);
         return this;
     }
 

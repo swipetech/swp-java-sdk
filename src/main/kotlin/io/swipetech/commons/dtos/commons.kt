@@ -1,11 +1,7 @@
 package io.swipetech.commons.dtos
 
 import com.fasterxml.jackson.annotation.*
-import org.hibernate.validator.constraints.Length
 import javax.validation.constraints.Min
-import javax.validation.constraints.NotBlank
-import javax.validation.constraints.Pattern
-import javax.validation.constraints.Size
 
 open class Network(val networkName: String) {
     object SWIPE: Network("SWIPE")
@@ -131,7 +127,13 @@ class Host {
 }
 
 enum class MemoType {
-    Hash, Text
+    HASH, TEXT
 }
 
-data class Memo(val type: MemoType = MemoType.Text, val value: String)
+data class Memo(
+    @JsonProperty("type")
+    val type: String = MemoType.TEXT.name,
+
+    @JsonProperty("value")
+    val value: String
+)
