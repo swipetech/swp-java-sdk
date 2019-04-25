@@ -2,6 +2,7 @@ package io.swipetech.commons.dtos
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import org.hibernate.validator.constraints.URL
 import javax.validation.constraints.NotBlank
 
 data class NewOrgDTO(
@@ -25,6 +26,7 @@ data class NewOrgDTO(
     @JsonProperty("accs")
     val accs: List<NewAccDTO>? = listOf(),
 
+    @URL(message = "{org_kyc_url_invalid}")
     @JsonProperty("kyc_url")
     val kycURL: String? = null
 )
