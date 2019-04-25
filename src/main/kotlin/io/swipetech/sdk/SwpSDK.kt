@@ -178,6 +178,10 @@ data class Swipe(
         return request(method = Methods.GET, path = "webhooks/$id")
     }
 
+    fun getClientPSPInfo(instantID: String): SuccessResponse<Any> {
+        return request(method = Methods.GET, path = "dns/$instantID")
+    }
+
     private inline fun <reified T : Any> request(
         method: Method,
         path: String,
