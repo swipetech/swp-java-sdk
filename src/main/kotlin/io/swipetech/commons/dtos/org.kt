@@ -23,7 +23,10 @@ data class NewOrgDTO(
     val supportedAssets: List<AssetDTO>? = listOf(),
 
     @JsonProperty("accs")
-    val accs: List<NewAccDTO>? = listOf()
+    val accs: List<NewAccDTO>? = listOf(),
+
+    @JsonProperty("kyc_url")
+    val kycURL: String? = null
 )
 
 data class OrgDTO(
@@ -58,7 +61,10 @@ data class OrgDTO(
     val assets: List<AssetDTO>? = listOf(),
 
     @JsonProperty("accs")
-    val accs: List<AccountDTO>? = listOf()
+    val accs: List<AccountDTO>? = listOf(),
+
+    @JsonProperty("kyc_url")
+    val kycURL: String? = null
 
 ) {
     companion object
