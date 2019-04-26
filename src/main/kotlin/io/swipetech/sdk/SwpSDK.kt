@@ -134,6 +134,12 @@ data class Swipe(
         )
     }
 
+    fun makeTrailTransfer(trailTransfer: NewTrailTransferDTO): SuccessResponse<DataDTOReceipt<TrailTransferDTO>> {
+        val mapper = jacksonObjectMapper()
+        val json = mapper.writeValueAsString(trailTransfer)
+        return request(method = Methods.POST, path = "trail-transfers", json = JSONObject(json))
+    }
+
     fun makeTransfers(transfer: NewTransferBatchDTO): SuccessResponse<DataDTOReceipt<TransferBatchDTO>> {
         val mapper = jacksonObjectMapper()
         val json = mapper.writeValueAsString(transfer)
