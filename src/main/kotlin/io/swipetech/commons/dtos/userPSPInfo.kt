@@ -2,23 +2,23 @@ package io.swipetech.commons.dtos
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class ClientPSPInfo(
+data class UserPSPInfo(
     @JsonProperty("psp")
     val psp: PSP,
 
-    @JsonProperty("client")
-    val client: Client
+    @JsonProperty("user")
+    val user: User
 )
 
 data class PSP(
     @JsonProperty("name")
     val name: String? = null,
 
-    @JsonProperty("tel")
-    val tel: String? = null
+    @JsonProperty("phoneNumber")
+    val phoneNumber: String? = null
 )
 
-data class Client(
+data class User(
     @JsonProperty("first_name")
     val firstName: String? = null,
 
