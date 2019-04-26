@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class NewTransferBatchDTO(
     @JsonProperty("actions")
-    val actions: MutableList<NewTransferDTO> = mutableListOf(),
+    val actions: List<NewTransferDTO> = listOf(),
 
     @JsonProperty("memo")
     val memo: Memo? = null
@@ -15,7 +15,7 @@ data class TransferBatchDTO(
     val id: String? = null,
 
     @JsonProperty("actions")
-    val actions: MutableList<TransferDTO> = mutableListOf(),
+    val actions: List<TransferDTO> = listOf(),
 
     @JsonProperty("memo")
     val memo: Memo? = null
