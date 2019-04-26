@@ -1,6 +1,7 @@
 package io.swipetech.commons.dtos
 
 import com.fasterxml.jackson.annotation.*
+import io.swipetech.commons.actions.sha256
 import javax.validation.constraints.Min
 
 open class Network(val networkName: String) {
@@ -121,7 +122,7 @@ class AcceptLanguage {
 
 class Host {
     companion object {
-        const val PRODUCTION = "https://api.swipetech.io"
+        const val PRODUCTION = "https://0-9.api.swipetech.io"
         const val SANDBOX = "https://api-sandbox.swipetech.io"
     }
 }
@@ -136,4 +137,14 @@ data class Memo(
 
     @JsonProperty("value")
     val value: String
-)
+) {
+    companion object {
+        fun Text(v: String): Memo {
+            return Memo(MemoType.TEXT.name, v)
+        }
+
+        fun Hash(v: String): Memo {
+            return Memo(MemoType.HASH.name, sha256(v))
+        }
+    }
+}
