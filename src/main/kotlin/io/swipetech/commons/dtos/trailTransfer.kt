@@ -15,7 +15,7 @@ data class NewTrailTransferDTO(
     val amount: String,
 
     @JsonProperty("asset")
-    val asset: String? = null
+    val asset: String
 ) : INewActionDTO
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
