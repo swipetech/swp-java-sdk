@@ -3,9 +3,16 @@ package io.swipetech.commons.dtos
 import com.fasterxml.jackson.annotation.*
 import javax.validation.constraints.Min
 
+data class SignatureInfo(
+    val method: String,
+    val timestamp: String,
+    val path: String,
+    val bodyString: String
+)
+
 open class Network(val networkName: String) {
-    object SWIPE: Network("SWIPE")
-    object STELLAR: Network("STELLAR")
+    object SWIPE : Network("SWIPE")
+    object STELLAR : Network("STELLAR")
 }
 
 data class PaginationResponse(val cursor: Long)

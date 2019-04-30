@@ -34,6 +34,15 @@ data class Swipe(
     private val host: String? = null
 ) {
 
+    fun checkSignature(signature: String, info: SignatureInfo): Boolean =
+         signature == sign(
+            secret = this.secret,
+            method = info.method,
+            timestamp = info.timestamp,
+            body = info.bodyString,
+            path = info.path
+        )
+
     fun getOrganization(): SuccessResponse<DataDTOReceipt<OrgDTO>> {
         return SuccessResponse.fromDataResp(
             request(method = Methods.GET, path = "organizations")
