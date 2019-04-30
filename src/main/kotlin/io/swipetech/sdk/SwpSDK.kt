@@ -57,7 +57,7 @@ data class Swipe(
     }
 
     @Throws(ErrorDTO::class)
-    fun getRevokeToken(): SuccessResponse<DataDTO<ResponseToken>> {
+    fun getToken(): SuccessResponse<DataDTO<ResponseToken>> {
         return SuccessResponse.fromDataResp(
             request(
                 method = Methods.GET,
