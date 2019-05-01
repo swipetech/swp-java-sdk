@@ -22,16 +22,15 @@ public class Test {
                     .setHost(host)
                     .build();
 
-
-            AccountDTO accDTO = swp.createAccount(
-                    new CreateAccountBuilder().addTag("fornecedor").build()
+            AssetDTO assetDTO = swp.issueAsset(
+                    new NewAssetDTO("Test222", "100", null)
             ).getData().getValue();
 
-
-            String CODE = "TOKEN";
-            String LIMIT = "100";
-            AssetDTO assetDTO = swp.issueAsset(
-                    new NewAssetDTO(CODE, LIMIT, Arrays.asList("fornecedor"))
+            AccountDTO accDTO = swp.createAccount(
+                    new CreateAccountBuilder()
+                            .addStartingBalance(assetDTO.getId(), "10")
+                            .addTag("tag10")
+                            .build()
             ).getData().getValue();
 
             swp.makeTransfers(
@@ -52,16 +51,14 @@ public class Test {
                                             .addTag("tag10")
                                             .build()
                             )
-                            .setMemo(new Memo(MemoType.TEXT.name(), "hello world!"))
                             .build()
             ).getData().getValue();
 
             System.out.println(result);
 
         } catch (ErrorDTO e) {
-            e.printStackTrace();
-        }
 
+        }
     }
 
 }
