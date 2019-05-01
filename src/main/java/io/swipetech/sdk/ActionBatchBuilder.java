@@ -11,7 +11,7 @@ public class ActionBatchBuilder {
     private Memo memo;
     private List<INewActionDTO> actions = new ArrayList();
 
-    public ActionBatchBuilder addMemo(Memo memo) {
+    public ActionBatchBuilder setMemo(Memo memo) {
         this.memo = memo;
         return this;
     }

@@ -1,11 +1,11 @@
 package io.swipetech.sdk;
 
-import io.swipetech.commons.dtos.*;
+import io.swipetech.commons.dtos.BalanceDTO;
+import io.swipetech.commons.dtos.NewAccDTO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CreateAccountBuilder {
 

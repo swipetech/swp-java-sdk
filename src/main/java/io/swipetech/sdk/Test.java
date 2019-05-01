@@ -31,7 +31,7 @@ public class Test {
 
         swp.makeTransfers(
                 new TransferBatchBuilder()
-                        .addMemo(new Memo(MemoType.TEXT.name(), "memo"))
+                        .setMemo(new Memo(MemoType.TEXT.name(), "memo"))
                         .addTransfer(ORG_ID, accDTO.getId(), assetDTO.getId(), "0.1")
                         .addTransfer(ORG_ID, accDTO.getId(), assetDTO.getId(), "0.1")
                         .build()

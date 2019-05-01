@@ -10,7 +10,7 @@ public class TransferBatchBuilder {
     private Memo memo;
     private List<NewTransferDTO> transfers = new ArrayList();
 
-    public TransferBatchBuilder addMemo(Memo memo) {
+    public TransferBatchBuilder setMemo(Memo memo) {
         this.memo = memo;
         return this;
     }

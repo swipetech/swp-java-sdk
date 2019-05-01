@@ -32,17 +32,20 @@ data class Swipe(
     private val host: String? = null
 ) {
 
+    @Throws(ErrorDTO::class)
     fun getOrganization(): SuccessResponse<DataDTOReceipt<OrgDTO>> {
         return SuccessResponse.fromDataResp(
             request(method = Methods.GET, path = "organizations")
         )
     }
 
+    @Throws(ErrorDTO::class)
     fun resetOrganization() {
         return request(method = Methods.POST, path = "organizations/reset")
     }
 
-    fun getRevokeToken(): SuccessResponse<DataDTO<ResponseToken>> {
+    @Throws(ErrorDTO::class)
+    fun getToken(): SuccessResponse<DataDTO<ResponseToken>> {
         return SuccessResponse.fromDataResp(
             request(
                 method = Methods.GET,
@@ -51,10 +54,12 @@ data class Swipe(
         )
     }
 
+    @Throws(ErrorDTO::class)
     fun revokeCredentials(token: String): SuccessResponse<Any> {
         return request(method = Methods.POST, path = "organizations/revoke/$token")
     }
 
+    @Throws(ErrorDTO::class)
     fun createAccount(acc: NewAccDTO? = null): SuccessResponse<DataDTOReceipt<AccountDTO>> {
         val json = acc?.let {
             val mapper = jacksonObjectMapper()
@@ -65,10 +70,12 @@ data class Swipe(
         )
     }
 
+    @Throws(ErrorDTO::class)
     fun destroyAccount(accountID: String): SuccessResponse<DataDTOReceipt<AccountDTO>> {
         return request(method = Methods.DELETE, path = "accounts/$accountID")
     }
 
+    @Throws(ErrorDTO::class)
     fun getAllAccounts(
         pagination: PaginationParams? = null,
         filter: FilterDTO? = null
@@ -83,6 +90,7 @@ data class Swipe(
         )
     }
 
+    @Throws(ErrorDTO::class)
     fun getAllAssets(
         pagination: PaginationParams? = null,
         filter: FilterDTO? = null
@@ -97,6 +105,7 @@ data class Swipe(
         )
     }
 
+    @Throws(ErrorDTO::class)
     fun getAllTransfers(
         accountID: String,
         pagination: PaginationParams? = null
@@ -110,6 +119,7 @@ data class Swipe(
         )
     }
 
+    @Throws(ErrorDTO::class)
     fun getAccount(id: String): SuccessResponse<DataDTOReceipt<AccountDTO>> {
         return request(
             method = Methods.GET,
@@ -117,6 +127,7 @@ data class Swipe(
         )
     }
 
+    @Throws(ErrorDTO::class)
     fun issueAsset(asset: NewAssetDTO): SuccessResponse<DataDTOReceipt<AssetDTO>> {
         return request(
             method = Methods.POST,
@@ -125,21 +136,25 @@ data class Swipe(
         )
     }
 
+    @Throws(ErrorDTO::class)
     fun makeTransfers(transfer: NewTransferBatchDTO): SuccessResponse<DataDTOReceipt<TransferBatchDTO>> {
         val mapper = jacksonObjectMapper()
         val json = mapper.writeValueAsString(transfer)
         return request(method = Methods.POST, path = "transfers", json = JSONObject(json))
     }
 
+    @Throws(ErrorDTO::class)
     fun getTransfer(id: String): SuccessResponse<DataDTOReceipt<TransferBatchDTO>> {
         return request(method = Methods.GET, path = "transfers/$id")
     }
 
+    @Throws(ErrorDTO::class)
     fun updateTags(id: String, tags: List<String>): SuccessResponse<DataDTOReceipt<TagsDTO>> {
         val json = JSONObject(NewTagsDTO(tags = tags))
         return request(method = Methods.PUT, path = "tags/$id", json = json)
     }
 
+    @Throws(ErrorDTO::class)
     fun makeActionBatch(batch: NewActionBatchDTO): SuccessResponse<DataDTOReceipt<ActionBatchDTO>> {
         val mapper = jacksonObjectMapper()
         val json = mapper.writeValueAsString(batch)
@@ -147,10 +162,12 @@ data class Swipe(
         return request(method = Methods.POST, path = "actions", json = JSONObject(json))
     }
 
+    @Throws(ErrorDTO::class)
     fun getActionBatch(id: String): SuccessResponse<DataDTOReceipt<ActionBatchDTO>> {
         return request(method = Methods.GET, path = "actions/$id")
     }
 
+    @Throws(ErrorDTO::class)
     fun createWebhook(hook: NewWebhookDTO): SuccessResponse<DataDTO<WebhookDTO>> {
         val json = hook.let {
             val mapper = jacksonObjectMapper()
@@ -161,10 +178,12 @@ data class Swipe(
         )
     }
 
+    @Throws(ErrorDTO::class)
     fun deleteWebHook(id: String): SuccessResponse<Any> {
         return request(method = Methods.DELETE, path = "webhooks/$id")
     }
 
+    @Throws(ErrorDTO::class)
     fun getWebhook(id: String): SuccessResponse<DataDTO<WebhookDTO>> {
         return request(method = Methods.GET, path = "webhooks/$id")
     }
