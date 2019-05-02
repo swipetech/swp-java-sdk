@@ -26,8 +26,13 @@ public class ActionBatchBuilder {
         return this;
     }
 
-    public ActionBatchBuilder addIssueAsset(String code, String limit, List<String> tags) {
-        actions.add(new NewAssetDTO(code, limit, tags));
+    public ActionBatchBuilder addIssueAsset(
+            String code,
+            String limit,
+            List<String> tags,
+            Boolean isDefault) {
+
+        actions.add(new NewAssetDTO(code, limit, tags, isDefault));
         return this;
     }
 

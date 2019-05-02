@@ -23,7 +23,7 @@ public class Test {
                     .build();
 
             AssetDTO assetDTO = swp.issueAsset(
-                    new NewAssetDTO("Test222", "100", null)
+                    new NewAssetDTO("Test222", "100", null,false )
             ).getData().getValue();
 
             AccountDTO accDTO = swp.createAccount(
@@ -43,7 +43,7 @@ public class Test {
 
             ActionBatchDTO result = swp.makeActionBatch(
                     new ActionBatchBuilder()
-                            .addIssueAsset("Test290", "100", null)
+                            .addIssueAsset("Test290", "100", null, false)
                             .addTransfer(ORG_ID, accDTO.getId(), assetDTO.getId(), "0.1")
                             .addCreateAccount(
                                     new CreateAccountBuilder()
