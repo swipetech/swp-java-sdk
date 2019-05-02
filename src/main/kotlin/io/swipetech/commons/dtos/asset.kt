@@ -49,7 +49,7 @@ data class AssetDTO(
     val tags: List<String>? = listOf(),
 
     @JsonProperty("is_default")
-    val isDefault: Boolean
+    val isDefault: Boolean? = false
 
 ) : IActionDTO {
 
