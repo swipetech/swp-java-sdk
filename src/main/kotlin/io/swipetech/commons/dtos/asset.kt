@@ -27,7 +27,7 @@ data class NewAssetDTO(
     @JsonProperty("tags")
     val tags: List<String>? = listOf(),
 
-    @JsonProperty("is_default")
+    @JsonProperty("default")
     val isDefault: Boolean? = false
 
 ) : INewActionDTO
@@ -48,7 +48,7 @@ data class AssetDTO(
     @JsonProperty("tags")
     val tags: List<String>? = listOf(),
 
-    @JsonProperty("is_default")
+    @JsonProperty("default")
     val isDefault: Boolean? = false
 
 ) : IActionDTO {
