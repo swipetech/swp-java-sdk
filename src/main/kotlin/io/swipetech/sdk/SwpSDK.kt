@@ -175,7 +175,7 @@ data class Swipe(
         return request(method = Methods.GET, path = "transfers/$id")
     }
 
-    fun getTrailTransfer(id: String): SuccessResponse<DataDTOReceipt<TransferBatchDTO>> {
+    fun getTrailTransferById(id: String): SuccessResponse<DataDTOReceipt<TrailTransferDTO>> {
         return request(method = Methods.GET, path = "trail-transfers/$id")
     }
 
