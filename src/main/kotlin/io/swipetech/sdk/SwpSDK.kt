@@ -175,6 +175,10 @@ data class Swipe(
         return request(method = Methods.GET, path = "transfers/$id")
     }
 
+    fun getTrailTransfer(id: String): SuccessResponse<DataDTOReceipt<TransferBatchDTO>> {
+        return request(method = Methods.GET, path = "trail-transfers/$id")
+    }
+
     @Throws(ErrorDTO::class)
     fun updateTags(id: String, tags: List<String>): SuccessResponse<DataDTOReceipt<TagsDTO>> {
         val json = JSONObject(NewTagsDTO(tags = tags))
