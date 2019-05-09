@@ -7,6 +7,7 @@ import io.swipetech.commons.dtos.*
 import org.json.JSONObject
 import SwpTimestamp
 import SwpSignature
+import com.fasterxml.jackson.module.kotlin.convertValue
 import java.time.Instant
 
 data class SuccessResponse<T>(
@@ -36,7 +37,7 @@ data class Swipe(
 
     @Throws(ErrorDTO::class)
     fun checkSignature(signature: String, info: SignatureInfo): Boolean =
-         signature == sign(
+        signature == sign(
             secret = this.secret,
             method = info.method,
             timestamp = info.timestamp,
@@ -72,7 +73,7 @@ data class Swipe(
     }
 
     @Throws(ErrorDTO::class)
-    fun createAccount(acc: NewAccDTO? = null): SuccessResponse<DataDTOReceipt<AccountDTO>>  {
+    fun createAccount(acc: NewAccDTO? = null): SuccessResponse<DataDTOReceipt<AccountDTO>> {
         val json = acc?.let {
             val mapper = jacksonObjectMapper()
             mapper.writeValueAsString(it)
@@ -179,6 +180,21 @@ data class Swipe(
         return request(method = Methods.GET, path = "trail-transfers/$id")
     }
 
+    fun getAllTrailTransfers(filter: TrailTransferFilter, pagination: PaginationParams? = null):
+            SuccessResponse<List<DataDTOReceipt<TransferDTO>>> {
+
+        jacksonObjectMapper().convertValue<HashMap<String, String>>(filter)
+
+        return SuccessResponse.fromDataListRes(
+            request(
+                method = Methods.GET,
+                path = "trail-transfers",
+                pagination = pagination,
+                params = jacksonObjectMapper().convertValue(filter)
+            )
+        )
+    }
+
     @Throws(ErrorDTO::class)
     fun updateTags(id: String, tags: List<String>): SuccessResponse<DataDTOReceipt<TagsDTO>> {
         val json = JSONObject(NewTagsDTO(tags = tags))
@@ -229,7 +245,8 @@ data class Swipe(
         path: String,
         pagination: PaginationParams? = null,
         json: JSONObject? = null,
-        filter: FilterDTO? = null
+        filter: FilterDTO? = null,
+        params: HashMap<String, String> = hashMapOf()
     ): T {
 
         val body = json ?: ""
@@ -241,8 +258,6 @@ data class Swipe(
             body = body.toString(),
             timestamp = timestamp
         )
-
-        val params = mutableMapOf<String, String>()
 
         pagination?.let { p ->
             params["limit"] = p.limit

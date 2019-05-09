@@ -39,3 +39,10 @@ data class TrailTransferDTO(
     @JsonProperty("action_code")
     val actionCode: String? = ActionCode.ACTION_NOT_PROCESSED.toString()
 ) : IActionDTO
+
+data class TrailTransferFilter(
+    val userFrom: String? = null,
+    val domainFrom: String? = null,
+    val userTo: String? = null,
+    val domainTo: String? = null
+)
