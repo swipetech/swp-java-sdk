@@ -189,10 +189,10 @@ data class Swipe(
                 path = "trail-transfers",
                 pagination = pagination,
                 params = hashMapOf(
-                    filter.userFrom to "user_from",
-                    filter.domainFrom to "domain_from",
-                    filter.userTo to "user_to",
-                    filter.domainTo to "domain_to"
+                     "user_from" to filter.userFrom,
+                     "domain_from" to filter.domainFrom,
+                     "user_to" to filter.userTo ,
+                     "domain_to" to filter.domainTo
                 )
             )
         )
