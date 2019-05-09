@@ -41,8 +41,8 @@ data class TrailTransferDTO(
 ) : IActionDTO
 
 data class TrailTransferFilter(
-    val userFrom: String? = null,
-    val domainFrom: String? = null,
-    val userTo: String? = null,
-    val domainTo: String? = null
+    val userFrom: String = "",
+    val domainFrom: String = "",
+    val userTo: String = "",
+    val domainTo: String = ""
 )

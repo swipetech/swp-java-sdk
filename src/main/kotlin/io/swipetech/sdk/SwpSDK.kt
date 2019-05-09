@@ -183,14 +183,17 @@ data class Swipe(
     fun getAllTrailTransfers(filter: TrailTransferFilter, pagination: PaginationParams? = null):
             SuccessResponse<List<DataDTOReceipt<TransferDTO>>> {
 
-        jacksonObjectMapper().convertValue<HashMap<String, String>>(filter)
-
         return SuccessResponse.fromDataListRes(
             request(
                 method = Methods.GET,
                 path = "trail-transfers",
                 pagination = pagination,
-                params = jacksonObjectMapper().convertValue(filter)
+                params = hashMapOf(
+                    filter.userFrom to "user_from",
+                    filter.domainFrom to "domain_from",
+                    filter.userTo to "user_to",
+                    filter.domainTo to "domain_to"
+                )
             )
         )
     }
