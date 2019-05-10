@@ -180,20 +180,26 @@ data class Swipe(
         return request(method = Methods.GET, path = "trail-transfers/$id")
     }
 
-    fun getAllTrailTransfers(filter: TrailTransferFilter, pagination: PaginationParams? = null):
+    fun getAllTrailTransfers(filter: TrailTransferFilter? = null, pagination: PaginationParams? = null):
             SuccessResponse<List<DataDTOReceipt<TrailTransferDTO>>> {
+
+        val params = if (filter == null) {
+            hashMapOf()
+        } else {
+            hashMapOf(
+                "user_from" to filter.userFrom,
+                "domain_from" to filter.domainFrom,
+                "user_to" to filter.userTo ,
+                "domain_to" to filter.domainTo
+            )
+        }
 
         return SuccessResponse.fromDataListRes(
             request(
                 method = Methods.GET,
                 path = "trail-transfers",
                 pagination = pagination,
-                params = hashMapOf(
-                     "user_from" to filter.userFrom,
-                     "domain_from" to filter.domainFrom,
-                     "user_to" to filter.userTo ,
-                     "domain_to" to filter.domainTo
-                )
+                params = params
             )
         )
     }
