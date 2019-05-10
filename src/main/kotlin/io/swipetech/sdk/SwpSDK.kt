@@ -181,7 +181,7 @@ data class Swipe(
     }
 
     fun getAllTrailTransfers(filter: TrailTransferFilter, pagination: PaginationParams? = null):
-            SuccessResponse<List<DataDTOReceipt<TransferDTO>>> {
+            SuccessResponse<List<DataDTOReceipt<TrailTransferDTO>>> {
 
         return SuccessResponse.fromDataListRes(
             request(
