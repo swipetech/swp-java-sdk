@@ -16,7 +16,7 @@ data class PSP(
     @JsonProperty("name")
     val name: String? = null,
 
-    @JsonProperty("phoneNumber")
+    @JsonProperty("phone_number")
     val phoneNumber: String? = null,
 
     @JsonProperty("domain")
